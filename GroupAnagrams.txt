@@ -1,0 +1,31 @@
+class GroupAnagrams {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>> freq=new HashMap<>();
+        if(strs.length==0){
+            return new ArrayList<>();
+        }
+        for(String s :strs){
+            int[] fq=new int[26];
+            for(char c: s.toCharArray()){
+                fq[c-'a']++;
+            }
+            StringBuilder sb=new StringBuilder();
+            char c='a';
+            for(int i :fq){
+                sb.append(c);
+                sb.append(i);
+                c++;
+            }
+            String key=sb.toString();
+            if(freq.containsKey(key)){
+                freq.get(key).add(s);
+            }
+            else{
+                List<String> slst= new ArrayList<>();
+                slst.add(s);
+                freq.put(key,slst);
+            }
+        }
+        return new ArrayList<>(freq.values());    
+    }
+}
