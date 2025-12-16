@@ -1,0 +1,23 @@
+
+class SubArraySum {
+    static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        // code here
+        ArrayList<Integer> arl=new ArrayList<>();
+        int start=0;
+        int sum=0;
+        for(int end=0;end<arr.length;end++){
+            sum+=arr[end];
+            while(sum > target && start<=end){
+                sum -=arr[start];
+                start ++;
+            }
+            if(sum==target){
+                arl.add(start+1);
+                arl.add(end+1);
+                return arl;
+            }
+        }
+        arl.add(-1);
+        return arl;
+    }
+}
