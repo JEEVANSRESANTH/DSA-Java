@@ -1,0 +1,16 @@
+class nextLargerElement {
+    public ArrayList<Integer> nextLargerElement(int[] arr) {
+        // code here
+        ArrayList<Integer> arl=new ArrayList<>();
+        Stack<Integer> stk=new Stack<>();
+        for(int i=arr.length-1;i>=0;i--){
+            while(!stk.isEmpty() && stk.peek()<=arr[i]){
+                stk.pop();
+            }
+            arl.add(stk.isEmpty()?-1:stk.peek());
+            stk.push(arr[i]);
+        }
+        Collections.reverse(arl);
+        return arl;
+    }
+}
