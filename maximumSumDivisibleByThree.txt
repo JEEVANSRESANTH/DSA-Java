@@ -1,0 +1,35 @@
+class Solution {
+    public int maximumSum(int[] nums) {
+        List<Integer> r0 = new ArrayList<>();
+        List<Integer> r1 = new ArrayList<>();
+        List<Integer> r2 = new ArrayList<>();
+        for(int n:nums){
+            if(n%3==0){
+                r0.add(n);
+            }
+            else if(n%3==1){
+                r1.add(n);
+            }
+            else{
+                r2.add(n);
+            }
+        }
+        r0.sort(Collections.reverseOrder());
+        r1.sort(Collections.reverseOrder());
+        r2.sort(Collections.reverseOrder());
+        int max=0;
+        if(r0.size()>=3){
+            max=Math.max(max,r0.get(0)+r0.get(1)+r0.get(2));
+        }
+        if(r1.size()>=3){
+            max=Math.max(max,r1.get(0)+r1.get(1)+r1.get(2));
+        }
+        if(r2.size()>=3){
+            max=Math.max(max,r2.get(0)+r2.get(1)+r2.get(2));
+        }
+        if(r0.size()>=1 && r1.size()>=1 && r2.size()>=1){
+            max=Math.max(max,r0.get(0)+r1.get(0)+r2.get(0));
+        }
+        return max;
+    }
+}
