@@ -1,0 +1,20 @@
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> arl=new ArrayList<>();
+        for(int i=1;i<=n;i++){
+            if(i%3==0 && i%5==0){
+                arl.add("FizzBuzz");
+            }
+            else if(i%3 ==0){
+                arl.add("Fizz");
+            }
+            else if(i%5==0){
+                arl.add("Buzz");
+            }
+            else{
+                arl.add(Integer.toString(i));
+            }
+        }
+        return arl;
+    }
+}
